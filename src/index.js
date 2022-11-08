@@ -1,21 +1,50 @@
  import React from 'react';
  import ReactDOM from 'react-dom/client';
+ import './style.css';
 
- let img = "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/66/626048/1.jpg?1723";
- let content  = "Costa Sardine In Vegetable Oil 125g x 1";
- let price =455;
- let productName = 'Costa Sardine';
+ const style = {
+  display:'flex',
+ } 
 
- let img2 = "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/87/5167301/1.jpg?7673";
- let content2  = "EILIFINTE B06 Casual Crossbody Shoulder Chest Bag-Grey";
- let price2 =100;
- let productName2 = 'EILIFINTE';
+ const divImg= {
+  width:'30%',
+  backgroundColor: 'white'
+ }
+ const products =[
+  {
+    productImage: "https://ng.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/66/626048/1.jpg?1723",
+    content: "Costa Sardine In Vegetable Oil 125g x 1",
+     price: 455,
+     productname: 'Costa Sardine'
+  }, 
+  {
+    productImage: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/87/5167301/1.jpg?7673",
+    content: "EILIFINTE B06 Casual Crossbody Shoulder Chest Bag-Grey",
+     price: 100,
+     productname: 'EILIFINTE'
+  }
+  
+]
+const newProducts = products.map((value, index)=>{
+  const {productname, productImage, content, price} =value;
+  return (
+    <div key={index} style={divImg}>
+    {productname}
+    <br />
+    <img src= {productImage} />
+    <div>{content} </div>
+    <br />
+   ${price}
+    </div>
+  )
+})
+// console.log(newProducts)
 
   function App(){
+
       return (
-        <div>
-       <Product  imgsrc={img} content={content} price={price}  productname={productName}/>
-       <Product  imgsrc={img2} content={content2} price={price2}  productname={productName2} />
+        <div style={style}>
+         {newProducts}   
         </div>
        )
   }
